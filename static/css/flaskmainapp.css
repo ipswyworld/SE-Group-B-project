@@ -1,0 +1,76 @@
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif; /* Change the font */
+    background-color: #f4f4f4; /* Change the background color */
+    color: #333; /* Change the text color */
+}
+
+header {
+    background-color: #4285f4; /* Change the header background color */
+    color: #fff;
+    padding: 10px;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #555; /* Change the navigation text color */
+}
+
+main {
+    background-color: #fff; /* Change the main content background color */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: #333; /* Change the main content text color */
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+footer {
+    background-color: #4285f4; /* Change the footer background color */
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Add Bootstrap styles for the navigation bar */
+.navbar {
+    background-color: #007bff; /* Change the navbar background color */
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.navbar-toggler {
+    color: #fff;
+}
+
+.list-group-item {
+    border-bottom: 1px solid #ccc; /* Change the list item border color */
+}
+
+#reviewlist {
+    border-color: rgba(0, 123, 255, 0.1); /* Change the border color */
+    border-right: transparent;
+    border-top: transparent;
+    border-bottom: transparent;
+}
+/* Add additional styles specific to your application as needed */
