@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}Signup{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Signup</h1>
+    <form method="POST" action="/signup" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="username" class="form-label">Username:</label>
+            <input type="text" class="form-control" id="username" name="username" value="{{ request.form.username }}">
+            {% with messages = get_flashed_messages() %}
+                {% for message in messages %}
+                    {% if 'Username already exists' in message %}<p class="text-danger">{{ message }}</p>{% endif %}
+                {% endfor %}
+            {% endwith %}
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" value="{{ request.form.email }}">
+            {% with messages = get_flashed_messages() %}
+                {% for message in messages %}
+                    {% if 'Invalid email' in message %}<p class="text-danger">{{ message }}</p>{% endif %}
+                    {% if 'Email already exists' in message %}<p class="text-danger">{{ message }}</p>{% endif %}
+                {% endfor %}
+            {% endwith %}
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password:</label>
+            <input type="password" class="form-control" id="password" name="password">
+            {% with messages = get_flashed_messages() %}
+                {% for message in messages %}
+                    {% if 'Passwords do not match' in message %}<p class="text-danger">{{ message }}</p>{% endif %}
+                {% endfor %}
+            {% endwith %}
+        </div>
+        <div class="mb-3">
+            <label for="password_repeat" class="form-label">Repeat Password:</label>
+            <input type="password" class="form-control" id="password_repeat" name="password_repeat">
+            {% with messages = get_flashed_messages() %}
+                {% for message in messages %}
+                    {% if 'Passwords must match' in message %}<p class="text-danger">{{ message }}</p>{% endif %}
+                {% endfor %}
+            {% endwith %}
+        </div>
+        <div class="mb-3">
+            <label for="user_picture" class="form-label">Profile Picture:</label>
+            <input type="file" name="user_picture" id="picture-field" accept=".jpg, .png, .jpeg" />
+        </div>
+        <button type="submit" class="btn btn-primary">Signup</button>
+    </form>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock %}

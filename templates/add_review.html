@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Add Review to Comment</h1>
+
+  <form method="POST" action="{{ url_for('add_review', comment_id=comment.id) }}">
+    {{ form.hidden_tag() }}
+
+    <div class="form-group">
+      <label for="review_text">Review Text:</label>
+      <textarea class="form-control" id="review_text" name="review_text" rows="4" placeholder="Enter your review" required></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit Review</button>
+  </form>
+
+  <a href="{{ url_for('comments', issue_id=comment.issue.id) }}" class="btn btn-secondary">Back to Comments</a>
+{% endblock %}

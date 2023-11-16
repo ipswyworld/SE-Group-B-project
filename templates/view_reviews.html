@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Reviews for Comment</h1>
+  <h2>Comment Text:</h2>
+  <p>{{ comment.text }}</p>
+
+  <h2>Reviews:</h2>
+  <ul>
+    {% for review in reviews %}
+      <li>
+        <p>{{ review.text }}</p>
+        <p>Review by: {{ review.user.username }}</p>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <a href="{{ url_for('comments', issue_id=comment.issue.id) }}" class="btn btn-secondary">Back to Comments</a>
+</div>
+{% endblock %}

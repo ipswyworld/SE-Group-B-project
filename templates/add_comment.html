@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Add Comment</h1>
+  <form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+      {{ form.text.label(class="form-label") }}
+      {{ form.text(class="form-control", placeholder="Enter your comment") }}
+    </div>
+    <button type="submit" class="btn btn-primary">Submit Comment</button>
+  </form>
+  <a href="{{ url_for('issues') }}" class="btn btn-secondary">Back to Issues</a>
+{% endblock %}

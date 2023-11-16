@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1 class="text-primary fw-bolder">Comments for Issue: {{ issue.title }}</h1>
+
+  <!-- Add a comment button (visible only to authenticated users) -->
+  {% if user %}
+  <a href="{{ url_for('add_comment', issue_id=issue.id) }}" class="btn btn-primary">Add Comment</a>
+  {% endif %}
+
+  <!-- List of comments -->
+  <ul class="list-group py-1">
+    {% for comment in issue.comments %}
+      <li class="list-group-item py-3 mb-2">
+        <p>{{ comment.text }}</p>
+        <p><small class="text-muted">Comment by: {{ comment.user.username }}</small></p>
+
+        <!-- Display reviews for this comment -->
+        <ul class="list-group-item text-dark py-3 ms-3" id="reviewlist">
+          <h6 class="text-danger">Reviews</h6>
+          {% for review in comment.reviews %}
+            <li class="ms-3 rounded">
+              <p class="text-secondary">{{ review.text }}</p>
+              <p><small class="text-muted">Review by: {{ review.user.username }}</small></p>
+            </li>
+          {% endfor %}
+        </ul>
+
+        <!-- Button to add a review to this comment -->
+        {% if user %}
+          <a href="{{ url_for('add_review', comment_id=comment.id) }}" class="btn btn-secondary">Add Review</a>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+
+  <a href="{{ url_for('issues') }}" class="btn btn-secondary">Back to Issues</a>
+{% endblock %}

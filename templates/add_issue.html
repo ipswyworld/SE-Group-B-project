@@ -1,0 +1,22 @@
+<!-- add_issue.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Add New Issue</h1>
+
+  <form method="POST">
+    <div class="form-group">
+      <label for="title">Issue Title</label>
+      <input type="text" id="title" name="title" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Issue Description</label>
+      <textarea id="description" name="description" class="form-control" rows="4" required></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit Issue</button>
+  </form>
+
+  <a href="{{ url_for('issues') }}">Back to Issues</a>
+{% endblock %}

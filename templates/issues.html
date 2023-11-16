@@ -1,0 +1,33 @@
+<!-- issues.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1 class="text-primary fw-bolder">Issues</h1>
+
+  <!-- Search bar form -->
+  <form method="GET">
+    <input type="text" name="search" placeholder="Search issues">
+    <button type="submit" class="btn btn-primary">Search</button>
+    <button type="reset" class="btn btn-secondary">Reset</button>
+  </form>
+
+  <!-- List of issues -->
+  <ul class="list-group">
+    {% for issue in issues %}
+      <li class="list-group-item ms-2">
+        <h2 class="text-primary">{{ issue.title }}</h2>
+        <p class="fw-bold">{{ issue.description }}</p>
+        <p><small class="text-muted">Created by: {{ issue.user.username }}</small></p>
+        <p><small class="text-muted">Created at: {{ issue.created_at }}</small></p>
+        
+        <a href="{{ url_for('comments', issue_id=issue.id) }}" class="btn btn-link">View Comments</a>
+
+        <!-- Add a button to add a comment for this issue -->
+        <!-- Add a button to add a comment for this issue (visible only to authenticated users) -->
+        {% if user %}
+        <a href="{{ url_for('add_comment', issue_id=issue.id) }}" class="btn btn-primary">Add Comment</a>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
